@@ -1,0 +1,128 @@
+﻿
+<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content" ng-controller="CommissionEditController">
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hpanel">
+                    <div>
+                        <form name="form" class="form-horizontal ng-pristine ng-valid col-md-12" novalidate unsaved-warning-form>
+                            <input type="hidden" data-description="This field is used for intergration testing" name="itest-Id" value="{{commission.CommissionId}}" />
+                            <tabset>
+                                <tab>
+                                    <tab-heading>
+                                        <i class="fa fa-laptop"></i> Edit Commission
+                                    </tab-heading>
+
+                                    <div class="panel-body">
+
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <label>Amount</label>
+                                                    <input ng-readonly="commission.CommissionAmount" name="amount" class="form-control" ng-model="commission.CommissionAmount" ng-change="UpdateCommissionAmount()" ng-maxlength="50" required ng-class="{ errorinput: form.amount.$invalid }">
+                                                    <span ng-show="form.amount.$invalid">
+                                                        <span ng-show="form.amount.$error.required" class="help-block error"><i class="fa fa-warning"></i> This is a required field.</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-sm-6">
+                                                <div class="col-sm-12">
+                                                    <label>Payment method</label>
+                                                    <select style="border: none" name="paymentMethod" class="form-control col-sm-12" data-ng-model="commission.PaymentMethodId" required ng-class="{errorinput:form.paymentMethod.$invalid}"
+                                                            data-ng-options="i.PaymentMethodId as i.Name for i in paymentMethods">
+                                                        <option value="">Please select</option>
+                                                    </select>
+
+                                                    <span ng-show="form.paymentMethod.$invalid">
+                                                        <span ng-show="form.paymentMethod.$error.required" class="help-block error"><i class="fa fa-warning"></i>PaymentMethod is a required field.</span>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="hr-line-dashed"></div>
+                                        <div class="row">
+
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="row">
+
+                                                <div class="form-group col-sm-6">
+                                                    <div class="col-sm-12">
+                                                        <label>Notes</label>
+
+                                                        <textarea ng-readonly="readOnly" name="notes" rows="6" class="form-control" ng-model="commission.Notes" required ng-class="{errorinput:form.notes.$invalid}"></textarea>
+                                                        <span ng-show="form.notes.$invalid">
+                                                            <span ng-show="form.notes.$error.required" class="help-block error"><i class="fa fa-warning"></i>Notes are required field.</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="hr-line-dashed"></div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="check-element sample-show-hide alert alert-success animate-show" ng-show="showMessageSave" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i>
+                                                    <span>commission has been paid</span>
+                                                </div>
+                                                <div class="check-element sample-show-hide alert alert-danger animate-show" ng-show="showMessageFailedSave" style="clear:both;">
+                                                    <i class="fa-fw fa fa-check"></i><span>commission has not  been paid</span>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <div class="col-sm-8 col-sm-offset-2">
+
+                                                <button class="btn btn-default" type="submit" ng-click="Cancel()">
+                                                    Back
+                                                </button>
+
+                                                <div class="btn-group">
+                                                    <button ng-click="Save(commission,true)" class="btn btn-info dropdown-toggle" ng-disabled="!form.$valid">
+                                                        Clear Commission
+                                                    </button>
+                                                  
+                                                  
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </tab>
+                              
+                           
+                            </tabset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

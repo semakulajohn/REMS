@@ -1,0 +1,159 @@
+﻿<div id="header" ng-include="'/app/views/_common/header.html'"></div>
+
+<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+
+<div id="wrapper">
+
+    <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
+
+    <div class="content">
+        <tabset>
+            <tab>
+                <tab-heading>
+                    Client List
+                </tab-heading>
+                <div class="row" ng-controller="AgentClientsController">
+                    <div class="col-lg-12">
+
+                        <a ui-sref="client-edit({ action: 'create', clientId: 0})" class="btn btn-danger btn-sm"><i class="fa fa-plus"></i> Add Client</a>
+                        <div class="clear0"></div>
+
+                        <span ng-if="loadingSpinner" class="loadingSpinner">
+                            <img src="/images/loading-bars.svg" width="45" height="45" /> Loading...
+                        </span>
+
+                        <div class="clear10"></div>
+
+                        <div style="height: 520px" class="grid gridx" ui-grid="gridData" ui-grid-selection></div>
+
+
+                    </div>
+
+                </div>
+            </tab>
+
+            <tab>
+                <tab-heading>
+                     Unpaid Commission
+                </tab-heading>
+                <div class="row" ng-controller="AgentUnPaidCommissionController">
+                    <div class="col-lg-12">
+                        <div ng-controller="NavController">
+                            <div ng-repeat="role in user.UserRoles">
+                                <div ng-if="role !='agent'">
+                                    <a class="btn btn-danger btn-sm m-b-xs" ng-click="PayCommission()"> Pay Commission</a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear0"></div>
+
+                        <span ng-if="loadingSpinner" class="loadingSpinner">
+                            <img src="/images/loading-bars.svg" width="45" height="45" /> Loading...
+                        </span>
+
+                        <div class="clear10"></div>
+
+                        <div style="height: 520px" class="grid gridx" ui-grid="gridData" ui-grid-selection></div>
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="hr-line-dashed"></div>
+                       <div class="row" ng-controller="NavController">
+                            <div ng-repeat="role in user.UserRoles">
+                                <div ng-if="role !='agent'">
+                                 
+                                        <div class="panel-body">
+
+
+                                            <div class="row">
+                                                <div class="form-group col-sm-6">
+                                                    <div class="col-sm-12">
+                                                        <label>Amount</label>
+                                                        <input name="amount" class="form-control" data-ng-model="commission.PaymentAmount" ng-change="UpdateCommissionAmount()" ng-maxlength="50" required ng-class="{ errorinput: form.amount.$invalid }">
+                                                        <span ng-show="form.amount.$invalid">
+                                                            <span ng-show="form.amount.$error.required" class="help-block error"><i class="fa fa-warning"></i> This is a required field.</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-sm-6">
+                                                    <div class="col-sm-12">
+                                                        <label>Payment method</label>
+                                                        <select style="border: none" name="paymentMethod" class="form-control col-sm-12" data-ng-model="commission.PaymentMethodId" required ng-class="{errorinput:form.paymentMethod.$invalid}"
+                                                                data-ng-options="i.PaymentMethodId as i.Name for i in paymentMethods">
+                                                            <option value="">Please select</option>
+                                                        </select>
+
+                                                        <span ng-show="form.paymentMethod.$invalid">
+                                                            <span ng-show="form.paymentMethod.$error.required" class="help-block error"><i class="fa fa-warning"></i>PaymentMethod is a required field.</span>
+                                                        </span>
+
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <div class="row">
+
+
+
+                                                <div class="row">
+
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="col-sm-12">
+                                                            <label>Notes</label>
+
+                                                            <textarea ng-readonly="readOnly" name="notes" rows="6" class="form-control" ng-model="commission.Notes" required ng-class="{errorinput:form.notes.$invalid}"></textarea>
+                                                            <span ng-show="form.notes.$invalid">
+                                                                <span ng-show="form.notes.$error.required" class="help-block error"><i class="fa fa-warning"></i>Notes are required field.</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+            </div>
+                    </div>
+            </tab>
+           
+            <tab>
+                <tab-heading>
+                    Paid Commission
+                </tab-heading>
+                <div class="row" ng-controller="AgentPaidCommissionController">
+                    <div class="col-lg-12">
+
+
+                        <div class="clear0"></div>
+
+                        <span ng-if="loadingSpinner" class="loadingSpinner">
+                            <img src="/images/loading-bars.svg" width="45" height="45" /> Loading...
+                        </span>
+
+                        <div class="clear10"></div>
+
+                        <div style="height: 520px" class="grid gridx" ui-grid="gridData" ui-grid-selection></div>
+
+
+
+                    </div>
+
+                </div>
+            </tab>
+
+        </tabset>
+    </div>
+</div>

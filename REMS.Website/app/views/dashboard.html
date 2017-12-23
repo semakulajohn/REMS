@@ -1,0 +1,153 @@
+<!-- Header -->
+<div id="header" ng-include="'/app/views/_common/header.html?t=1'"></div>
+
+<!-- Navigation -->
+<aside id="menu" ng-include="'/app/views/_common/navigation.html?t=1d'"></aside>
+
+<!-- Main Wrapper -->
+<div id="wrapper" >
+
+    <div id="dasboard" class="content" animate-panel effect="zoomIn">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                            <h3 class="m-xs text-uppercase">
+                                Welcome to REMS  <span ng-if="loadingSpinner" class="loadingSpinner"><img src="/images/loading-bars.svg" /></span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="row" ng-controller="NavController">
+                <!--<div class="col-lg-6 animated-panel" style="animation-delay: 1.2s;" ng-repeat="role in user.UserRoles">
+                    <div ng-if="role !='agent'">
+                        <div class="hpanel" ng-controller="LatestUnPaidCommissionController">
+
+                            <div class="panel-body list" style="border: 1px solid #e4e5e7 !important;">
+                                <div class="panel-title">Latest UnPaid Commission</div>
+                                <div class="clear0"></div>
+
+                                <span ng-if="loadingSpinner" class="loadingSpinner">
+                                    <img src="/images/loading-bars.svg" width="45" height="45" /> Loading...
+                                </span>
+
+                                <div class="clear10"></div>
+
+                                <div style="height: 400px" class="grid" ui-grid="gridData" ui-grid-selection></div>
+                                <div class="pull-right">
+                                    <a ui-sref="alerts.needAttention">View all</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+
+                <!--<div class="col-lg-6 animated-panel" style="animation-delay: 1.2s;">
+
+            <div class="hpanel" ng-controller="RecentAgentsController">
+
+                <div class="panel-body list" style="border: 1px solid #e4e5e7 !important;">
+                    <div class="panel-title">Recently Created Agents</div>
+                    <div class="clear0"></div>
+
+                    <span ng-if="loadingSpinner" class="loadingSpinner">
+                        <img src="/images/loading-bars.svg" width="45" height="45" /> Loading...
+                    </span>
+
+                    <div class="clear10"></div>
+
+                    <div style="height: 400px" class="grid" ui-grid="gridData" ui-grid-selection></div>
+                    <div class="pull-right">
+                        <a href="#/agents/{{user.Id}}">View all</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>-->
+            </div>
+        </div>
+        <!--<div ng-controller="NavController">
+            <div ng-if="!isAdmin">
+                <div class="row" ng-controller="AgentGraphController">
+                    <div class="col-lg-8">
+                        <div class="hpanel">
+                            <div class="panel-heading">
+                                <div panel-tools></div>
+                                Graph Showing Total UnPaid Commission Per Service
+                            </div>
+                            <div class="panel-body">
+                                <div>
+                                    <canvas barchart options="barOptions" data="barData" width="400" height="150" responsive=true chart-series="series"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    <div class="row">
+                        <div class="col-lg-6 animated-panel" style="animation-delay: 1.2s;">
+                            <div class="hpanel" ng-controller="AgentLatestUnPaidCommissionController">
+
+                                <div class="panel-body list" style="border: 1px solid #e4e5e7 !important;">
+                                    <div class="panel-title">Latest UnPaid Commission</div>
+                                    <div class="clear0"></div>
+
+                                    <span ng-if="loadingSpinner" class="loadingSpinner">
+                                        <img src="/images/loading-bars.svg" width="45" height="45" /> Loading...
+                                    </span>
+
+                                    <div class="clear10"></div>
+
+                                    <div style="height: 400px" class="grid" ui-grid="gridData" ui-grid-selection></div>
+                                    <div class="pull-right">
+                                        <a ui-sref="alerts.needAttention">View all</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 animated-panel" style="animation-delay: 1.2s;">
+
+                            <div class="hpanel" ng-controller="AgentRecentClientsController">
+
+                                <div class="panel-body list" style="border: 1px solid #e4e5e7 !important;">
+                                    <div class="panel-title">Recently Created Clients</div>
+                                    <div class="clear0"></div>
+
+                                    <span ng-if="loadingSpinner" class="loadingSpinner">
+                                        <img src="/images/loading-bars.svg" width="45" height="45" /> Loading...
+                                    </span>
+
+                                    <div class="clear10"></div>
+
+                                    <div style="height: 400px" class="grid" ui-grid="gridData" ui-grid-selection></div>
+                                    <div class="pull-right">
+                                        <a href="#/agents/{{user.Id}}">View all</a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            </div>-->
+        </div>
+
+      
+</div>

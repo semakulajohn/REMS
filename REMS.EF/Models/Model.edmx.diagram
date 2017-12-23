@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eed58fbb28b3440fa61decf99154ae3b" Name="Diagram1" ZoomLevel="43">
+        <EntityTypeShape EntityType="REMSModel.AspNetRole" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="REMSModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="REMSModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="REMSModel.AspNetUser" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="REMSModel.Estate" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="REMSModel.House" Width="1.5" PointX="7.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="REMSModel.Tenant" Width="1.5" PointX="9.75" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="REMSModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_IdentityUser_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="REMSModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_IdentityUser_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="REMSModel.FK_AspNetUser_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="REMSModel.FK_AspNetUser_DeletedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="REMSModel.FK_AspNetUser_UpdatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="REMSModel.FK_db_House_DeletedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="REMSModel.FK_dbo_Estate_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="REMSModel.FK_dbo_Estate_DeletedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="REMSModel.FK_dbo_Estate_UpdatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="REMSModel.FK_dbo_House_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="REMSModel.FK_dbo_House_UpdatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="REMSModel.FK_dbo_Tenant_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="REMSModel.FK_dbo_Tenant_DeletedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="REMSModel.FK_dbo_Tenant_UpdatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="REMSModel.FK_dbo_House_Estate" ManuallyRouted="false" />
+        <AssociationConnector Association="REMSModel.FK_dbo_Tenant_House" ManuallyRouted="false" />
+        <AssociationConnector Association="REMSModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="REMSModel.Transaction" Width="1.5" PointX="12" PointY="6.75" />
+        <AssociationConnector Association="REMSModel.FK_dbo_Transaction_CreatedBy" />
+        <AssociationConnector Association="REMSModel.FK_dbo_Transaction_DeletedBy" />
+        <AssociationConnector Association="REMSModel.FK_dbo_Transaction_UpdatedBy" />
+        <AssociationConnector Association="REMSModel.FK_dbo_Transaction_House" />
+        <AssociationConnector Association="REMSModel.FK_dbo_Transaction_Tenant" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
