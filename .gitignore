@@ -45,3 +45,13 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# build
+[Dd]ebug/
+[Pp]ackages/
+[Rr]elease/
+[Oo]bj/
+[Oo]bj/Debug
+[Bb]in/
+*.dbmdl
+*.jfm
