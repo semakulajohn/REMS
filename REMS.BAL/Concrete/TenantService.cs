@@ -52,9 +52,15 @@ namespace REMS.BAL.Concrete
         {
             var results = this._dataService.GetAllTenants();
             return MapEFToModel(results);
-        } 
+        }
 
-       
+
+        public IEnumerable<Tenant> GetAllTenantsForParticularHouse(long houseId)
+        {
+            var results = this._dataService.GetAllTenantsForParticularHouse(houseId);
+            return MapEFToModel(results);
+        }
+
         public long SaveTenant(Tenant tenant, string userId)
         {
             var tenantDTO = new DTO.TenantDTO()

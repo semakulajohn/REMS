@@ -46,7 +46,7 @@ namespace REMS.DAL.Concrete
         public long SaveEstate(EstateDTO estateDTO, string userId)
         {
             long estateId = 0;
-
+            
             if (estateDTO.EstateId == 0)
             {
            

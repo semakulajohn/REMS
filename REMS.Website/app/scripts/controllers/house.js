@@ -179,3 +179,54 @@ angular
 
         }]);
 
+
+angular
+    .module('homer').controller('HouseTenantController', ['$scope', 'ngTableParams', '$http', '$filter', '$location', 'Utils', 'uiGridConstants',
+        function ($scope, ngTableParams, $http, $filter, $location, Utils, uiGridConstants) {
+            var houseId = $scope.houseId;
+
+            $scope.loadingSpinner = true;
+            var promise = $http.get('/webapi/TenantApi/GetAllTenantsForParticularHouse?houseId=' + houseId, {});
+            promise.then(
+                function (payload) {
+                    $scope.gridData.data = payload.data;
+                    $scope.loadingSpinner = false;
+                }
+            );
+            $scope.retrievedHouseId = $scope.houseId;
+            $scope.gridData = {
+                enableFiltering: true,
+                columnDefs: $scope.columns,
+                enableRowSelection: true
+            };
+
+            $scope.gridData.multiSelect = true;
+
+            $scope.gridData.columnDefs = [
+
+                { name: 'Tenant Id', field: 'TenantId', width: '5%', cellTemplate: '<div class="ui-grid-cell-contents"><a href="#/tenants/edit/'+$scope.retrievedHouseId+'/{{row.entity.TenantId}}">{{row.entity.TenantId}}</a></div>' },
+                {
+                    name: 'First Name', cellTemplate: '<div class="ui-grid-cell-contents"> <a href="#/tenants/edit/'+$scope.retrievedHouseId+'/{{row.entity.TenantId}}">{{row.entity.FirstName}}</a> </div>',
+                    sort: {
+                        direction: uiGridConstants.ASC,
+                        priority: 1
+                    }
+                },
+
+                { name: 'Last Name', field: 'LastName' },
+
+                { name: 'Email Address', field: 'Email' },
+
+                 { name: 'Mobile Number ', field: 'MobileNumber' },
+
+                { name: 'Transactions', field: 'TenantId', width: '15%', cellTemplate: '<div class="ui-grid-cell-contents"><a href="#/transactions/{{row.entity.TenantId}}">Tenant Transactions</a></div>' },
+
+
+
+
+            ];
+
+
+
+
+        }]);

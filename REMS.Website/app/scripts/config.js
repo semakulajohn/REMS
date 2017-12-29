@@ -125,7 +125,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
     })
 
     .state('tenant-edit', {
-        url: "/tenants/:action/:tenantId",
+        url: "/tenants/:action/:houseId/:tenantId",
         templateUrl: "/app/views/tenant/edit.html",
         data: {
             pageTitle: 'Tenant edit',
@@ -134,9 +134,23 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         controller: function ($scope, $stateParams) {
             $scope.action = $stateParams.action;
             $scope.tenantId = $stateParams.tenantId;
+            $scope.houseId = $stateParams.houseId;
             $scope.defaultTab = 'edit';
         }
     })
+
+         .state('house-tenants', {
+             url: "/tenants/:houseId",
+             templateUrl: "/app/views/house/house-tenants.html",
+             data: {
+                 pageTitle: 'House Tenants',
+                 pageDesc: ''
+             },
+             controller: function ($scope, $stateParams) {
+                 $scope.houseId = $stateParams.houseId;
+
+             }
+         })
 
    //houses
      .state('houses', {

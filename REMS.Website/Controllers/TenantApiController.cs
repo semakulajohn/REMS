@@ -41,8 +41,12 @@ namespace REMS.Website.Controllers
             {
                 return _tenantService.GetAllTenants();
             }
-
-          
+            [HttpGet]
+            [ActionName("GetAllTenantsForParticularHouse")]
+            public IEnumerable<Tenant> GetAllTenantsForParticularHouse(long houseId)
+            {
+                return _tenantService.GetAllTenantsForParticularHouse(houseId);
+            }
 
             [HttpGet]
             [ActionName("Delete")]

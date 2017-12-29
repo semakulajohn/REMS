@@ -32,7 +32,7 @@ namespace REMS.EF.Models
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual AspNetUser AspNetUser1 { get; set; }
         public virtual AspNetUser AspNetUser2 { get; set; }
-        public virtual House House { get; set; }
         public virtual Tenant Tenant { get; set; }
+        public virtual House House { get; set; }
     }
 }

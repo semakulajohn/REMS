@@ -292,6 +292,7 @@
     <Content Include="app\views\estate\edit.html" />
     <Content Include="app\views\estate\estate-house.html" />
     <Content Include="app\views\house\edit.html" />
+    <Content Include="app\views\house\house-tenants.html" />
     <Content Include="app\views\house\list.html" />
     <Content Include="app\views\estate\list.html" />
     <Content Include="app\views\modal\modalAgent.html" />
@@ -2307,6 +2308,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="email-templates\ForgotPassword.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

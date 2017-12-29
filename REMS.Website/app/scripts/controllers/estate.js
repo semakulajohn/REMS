@@ -261,7 +261,7 @@ angular
 
                 { name: 'House Id', field: 'HouseId', width: '5%', cellTemplate: '<div class="ui-grid-cell-contents"><a href="#/houses/edit/{{row.entity.HouseId}}">{{row.entity.HouseId}}</a></div>' },
                 {
-                    name: 'House Number', cellTemplate: '<div class="ui-grid-cell-contents"> <a href="#/houses/edit/{{row.entity.HouseId}}">{{row.entity.Number}}</a> </div>',
+                    name: 'House Number', cellTemplate: '<div class="ui-grid-cell-contents"> <a href="#/houses/edit/'+$scope.retrievedEstateId +'/{{row.entity.HouseId}}">{{row.entity.Number}}</a> </div>',
                     sort: {
                         direction: uiGridConstants.ASC,
                         priority: 1
@@ -272,7 +272,7 @@ angular
 
                 { name: 'Estate Name ', field: 'EstateName' },
 
-
+                 { name: 'Action', field: 'HouseId', cellTemplate: '<div class="ui-grid-cell-contents"><a href="#/tenants/{{row.entity.HouseId}}">Manage Tenants</a></div>' },
 
 
 

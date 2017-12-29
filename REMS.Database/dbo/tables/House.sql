@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[House]
 (
 	[HouseId]	BIGINT IDENTITY(1,1) NOT NULL,		 
-    [Number]		NVARCHAR  NULL, 
+    [Number]		NVARCHAR(MAX)  NULL, 
     [Amount]	 Float NOT NULL,
 	[EstateId]	BIGINT NOT NULL,
     [CreatedOn]		DATETIME NOT NULL, 

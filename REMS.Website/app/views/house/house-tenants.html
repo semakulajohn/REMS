@@ -8,12 +8,13 @@
     <div ng-include="'/app/views/_common/Breadcrumb.html'"></div>
 
     <div class="content">
-        <div class="row" ng-controller="TenantTransactionController">
+        <div class="row" ng-controller="HouseTenantController">
             <div class="col-lg-12">
 
                 <div class="clear0"></div>
 
-                <a ui-sref="tenant-transaction-edit({ action: 'tenantTransaction', tenantId:tenantId,transactionId: 0})" class="btn btn-danger btn-sm"><i class="fa fa-plus"></i> Add Tenant Transaction</a>
+                <!--<a ui-sref="tenant-edit({ action: 'create', tenantId: 0})" class="btn btn-danger btn-sm"><i class="fa fa-plus"></i> Add Tenant</a>-->
+                <a ui-sref="tenant-edit({ action: 'create', houseId:retrievedHouseId,tenantId: 0})" class="btn btn-danger btn-sm"><i class="fa fa-plus"></i> Add House Tenant</a>
 
                 <span ng-if="loadingSpinner" class="loadingSpinner">
                     <img src="/images/loading-bars.svg" width="45" height="45" /> Loading...

@@ -14,6 +14,8 @@ namespace REMS.BAL.Interface
       long SaveTenant(Tenant tenant, string userId);
       void MarkAsDeleted(long tenantId, string userId);
       IEnumerable<Transaction> GetTransactionsForTenant(long tenantId);
+      IEnumerable<Tenant> GetAllTenantsForParticularHouse(long houseId);
+        
         
     
     }

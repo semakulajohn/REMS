@@ -17,6 +17,7 @@ using System.IO;
 using log4net;
 using Microsoft.Owin.Security.DataProtection;
 using System.Data.Entity;
+using REMS.Website._classes;
 
 namespace REMS.Website.Controllers
 {
@@ -202,8 +203,8 @@ namespace REMS.Website.Controllers
                 code = System.Net.WebUtility.UrlEncode(code);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
 
-              //  SendEmail sendEmail = new SendEmail();
-              //  sendEmail.SendForgotPasswordEmail(model.Email, user.FirstName, callbackUrl);
+                SendEmail sendEmail = new SendEmail();
+                sendEmail.SendForgotPasswordEmail(model.Email, user.FirstName, callbackUrl);
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 

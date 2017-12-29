@@ -31,8 +31,8 @@ namespace REMS.EF.Models
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Estate> Estates { get; set; }
-        public virtual DbSet<House> Houses { get; set; }
         public virtual DbSet<Tenant> Tenants { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
+        public virtual DbSet<House> Houses { get; set; }
     }
 }

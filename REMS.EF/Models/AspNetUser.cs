@@ -21,12 +21,9 @@ namespace REMS.EF.Models
             this.AspNetUsers1 = new HashSet<AspNetUser>();
             this.AspNetUsers11 = new HashSet<AspNetUser>();
             this.AspNetUsers12 = new HashSet<AspNetUser>();
-            this.Houses = new HashSet<House>();
             this.Estates = new HashSet<Estate>();
             this.Estates1 = new HashSet<Estate>();
             this.Estates2 = new HashSet<Estate>();
-            this.Houses1 = new HashSet<House>();
-            this.Houses2 = new HashSet<House>();
             this.Tenants = new HashSet<Tenant>();
             this.Tenants1 = new HashSet<Tenant>();
             this.Tenants2 = new HashSet<Tenant>();
@@ -34,6 +31,9 @@ namespace REMS.EF.Models
             this.Transactions = new HashSet<Transaction>();
             this.Transactions1 = new HashSet<Transaction>();
             this.Transactions2 = new HashSet<Transaction>();
+            this.Houses = new HashSet<House>();
+            this.Houses1 = new HashSet<House>();
+            this.Houses2 = new HashSet<House>();
         }
     
         public string Id { get; set; }
@@ -70,12 +70,9 @@ namespace REMS.EF.Models
         public virtual AspNetUser AspNetUser2 { get; set; }
         public virtual ICollection<AspNetUser> AspNetUsers12 { get; set; }
         public virtual AspNetUser AspNetUser3 { get; set; }
-        public virtual ICollection<House> Houses { get; set; }
         public virtual ICollection<Estate> Estates { get; set; }
         public virtual ICollection<Estate> Estates1 { get; set; }
         public virtual ICollection<Estate> Estates2 { get; set; }
-        public virtual ICollection<House> Houses1 { get; set; }
-        public virtual ICollection<House> Houses2 { get; set; }
         public virtual ICollection<Tenant> Tenants { get; set; }
         public virtual ICollection<Tenant> Tenants1 { get; set; }
         public virtual ICollection<Tenant> Tenants2 { get; set; }
@@ -83,5 +80,8 @@ namespace REMS.EF.Models
         public virtual ICollection<Transaction> Transactions { get; set; }
         public virtual ICollection<Transaction> Transactions1 { get; set; }
         public virtual ICollection<Transaction> Transactions2 { get; set; }
+        public virtual ICollection<House> Houses { get; set; }
+        public virtual ICollection<House> Houses1 { get; set; }
+        public virtual ICollection<House> Houses2 { get; set; }
     }
 }

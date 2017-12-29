@@ -126,6 +126,11 @@ namespace REMS.DAL.Concrete
 
         }
 
-      
+        public IEnumerable<Tenant> GetAllTenantsForParticularHouse(long houseId)
+        {
+            var houseTenants = this.UnitOfWork.Get<Tenant>().AsQueryable()
+                .Where(h => h.HouseId == houseId);
+            return houseTenants; ;
+        }
     }
 }

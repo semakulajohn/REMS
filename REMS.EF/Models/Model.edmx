@@ -93,7 +93,7 @@
             <PropertyRef Name="HouseId" />
           </Key>
           <Property Name="HouseId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Number" Type="nvarchar" MaxLength="1" />
+          <Property Name="Number" Type="nvarchar(max)" />
           <Property Name="Amount" Type="float" Nullable="false" />
           <Property Name="EstateId" Type="bigint" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
@@ -596,12 +596,9 @@
           <NavigationProperty Name="AspNetUser2" Relationship="Self.FK_AspNetUser_DeletedBy" FromRole="AspNetUsers1" ToRole="AspNetUsers" />
           <NavigationProperty Name="AspNetUsers12" Relationship="Self.FK_AspNetUser_UpdatedBy" FromRole="AspNetUsers" ToRole="AspNetUsers1" />
           <NavigationProperty Name="AspNetUser3" Relationship="Self.FK_AspNetUser_UpdatedBy" FromRole="AspNetUsers1" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Houses" Relationship="Self.FK_db_House_DeletedBy" FromRole="AspNetUsers" ToRole="House" />
           <NavigationProperty Name="Estates" Relationship="Self.FK_dbo_Estate_CreatedBy" FromRole="AspNetUsers" ToRole="Estate" />
           <NavigationProperty Name="Estates1" Relationship="Self.FK_dbo_Estate_DeletedBy" FromRole="AspNetUsers" ToRole="Estate" />
           <NavigationProperty Name="Estates2" Relationship="Self.FK_dbo_Estate_UpdatedBy" FromRole="AspNetUsers" ToRole="Estate" />
-          <NavigationProperty Name="Houses1" Relationship="Self.FK_dbo_House_CreatedBy" FromRole="AspNetUsers" ToRole="House" />
-          <NavigationProperty Name="Houses2" Relationship="Self.FK_dbo_House_UpdatedBy" FromRole="AspNetUsers" ToRole="House" />
           <NavigationProperty Name="Tenants" Relationship="Self.FK_dbo_Tenant_CreatedBy" FromRole="AspNetUsers" ToRole="Tenant" />
           <NavigationProperty Name="Tenants1" Relationship="Self.FK_dbo_Tenant_DeletedBy" FromRole="AspNetUsers" ToRole="Tenant" />
           <NavigationProperty Name="Tenants2" Relationship="Self.FK_dbo_Tenant_UpdatedBy" FromRole="AspNetUsers" ToRole="Tenant" />
@@ -609,6 +606,9 @@
           <NavigationProperty Name="Transactions" Relationship="REMSModel.FK_dbo_Transaction_CreatedBy" FromRole="AspNetUser" ToRole="Transaction" />
           <NavigationProperty Name="Transactions1" Relationship="REMSModel.FK_dbo_Transaction_DeletedBy" FromRole="AspNetUser" ToRole="Transaction" />
           <NavigationProperty Name="Transactions2" Relationship="REMSModel.FK_dbo_Transaction_UpdatedBy" FromRole="AspNetUser" ToRole="Transaction" />
+          <NavigationProperty Name="Houses" Relationship="REMSModel.FK_db_House_DeletedBy" FromRole="AspNetUser" ToRole="House" />
+          <NavigationProperty Name="Houses1" Relationship="REMSModel.FK_dbo_House_CreatedBy" FromRole="AspNetUser" ToRole="House" />
+          <NavigationProperty Name="Houses2" Relationship="REMSModel.FK_dbo_House_UpdatedBy" FromRole="AspNetUser" ToRole="House" />
           </EntityType>
         <EntityType Name="Estate">
           <Key>
@@ -629,29 +629,7 @@
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_Estate_CreatedBy" FromRole="Estate" ToRole="AspNetUsers" />
           <NavigationProperty Name="AspNetUser1" Relationship="Self.FK_dbo_Estate_DeletedBy" FromRole="Estate" ToRole="AspNetUsers" />
           <NavigationProperty Name="AspNetUser2" Relationship="Self.FK_dbo_Estate_UpdatedBy" FromRole="Estate" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Houses" Relationship="Self.FK_dbo_House_Estate" FromRole="Estate" ToRole="House" />
-        </EntityType>
-        <EntityType Name="House">
-          <Key>
-            <PropertyRef Name="HouseId" />
-          </Key>
-          <Property Name="HouseId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Number" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="Amount" Type="Double" Nullable="false" />
-          <Property Name="EstateId" Type="Int64" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Deleted" Type="Boolean" Nullable="false" />
-          <Property Name="DeletedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="DeletedOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_db_House_DeletedBy" FromRole="House" ToRole="AspNetUsers" />
-          <NavigationProperty Name="AspNetUser1" Relationship="Self.FK_dbo_House_CreatedBy" FromRole="House" ToRole="AspNetUsers" />
-          <NavigationProperty Name="AspNetUser2" Relationship="Self.FK_dbo_House_UpdatedBy" FromRole="House" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Estate" Relationship="Self.FK_dbo_House_Estate" FromRole="House" ToRole="Estate" />
-          <NavigationProperty Name="Tenants" Relationship="Self.FK_dbo_Tenant_House" FromRole="House" ToRole="Tenant" />
-          <NavigationProperty Name="Transactions" Relationship="REMSModel.FK_dbo_Transaction_House" FromRole="House" ToRole="Transaction" />
+          <NavigationProperty Name="Houses" Relationship="REMSModel.FK_dbo_House_Estate" FromRole="Estate" ToRole="House" />
         </EntityType>
         <EntityType Name="Tenant">
           <Key>
@@ -673,8 +651,8 @@
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_Tenant_CreatedBy" FromRole="Tenant" ToRole="AspNetUsers" />
           <NavigationProperty Name="AspNetUser1" Relationship="Self.FK_dbo_Tenant_DeletedBy" FromRole="Tenant" ToRole="AspNetUsers" />
           <NavigationProperty Name="AspNetUser2" Relationship="Self.FK_dbo_Tenant_UpdatedBy" FromRole="Tenant" ToRole="AspNetUsers" />
-          <NavigationProperty Name="House" Relationship="Self.FK_dbo_Tenant_House" FromRole="Tenant" ToRole="House" />
           <NavigationProperty Name="Transactions" Relationship="REMSModel.FK_dbo_Transaction_Tenant" FromRole="Tenant" ToRole="Transaction" />
+          <NavigationProperty Name="House" Relationship="REMSModel.FK_dbo_Tenant_House" FromRole="Tenant" ToRole="House" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_IdentityUser_Id">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
@@ -736,18 +714,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_db_House_DeletedBy">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
-          <End Role="House" Type="Self.House" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="House">
-              <PropertyRef Name="DeletedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_dbo_Estate_CreatedBy">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
           <End Role="Estate" Type="Self.Estate" Multiplicity="*" />
@@ -780,30 +746,6 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Estate">
-              <PropertyRef Name="UpdatedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_House_CreatedBy">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
-          <End Role="House" Type="Self.House" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="House">
-              <PropertyRef Name="CreatedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_House_UpdatedBy">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
-          <End Role="House" Type="Self.House" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="House">
               <PropertyRef Name="UpdatedBy" />
             </Dependent>
           </ReferentialConstraint>
@@ -844,30 +786,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_House_Estate">
-          <End Role="Estate" Type="Self.Estate" Multiplicity="1" />
-          <End Role="House" Type="Self.House" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Estate">
-              <PropertyRef Name="EstateId" />
-            </Principal>
-            <Dependent Role="House">
-              <PropertyRef Name="EstateId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Tenant_House">
-          <End Role="House" Type="Self.House" Multiplicity="1" />
-          <End Role="Tenant" Type="Self.Tenant" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="House">
-              <PropertyRef Name="HouseId" />
-            </Principal>
-            <Dependent Role="Tenant">
-              <PropertyRef Name="HouseId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="AspNetUserRoles">
           <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
@@ -878,7 +796,6 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
           <EntitySet Name="Estates" EntityType="Self.Estate" />
-          <EntitySet Name="Houses" EntityType="Self.House" />
           <EntitySet Name="Tenants" EntityType="Self.Tenant" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_IdentityUser_Id" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_IdentityUser_Id">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -900,10 +817,6 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUsers1" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <AssociationSet Name="FK_db_House_DeletedBy" Association="Self.FK_db_House_DeletedBy">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="House" EntitySet="Houses" />
-          </AssociationSet>
           <AssociationSet Name="FK_dbo_Estate_CreatedBy" Association="Self.FK_dbo_Estate_CreatedBy">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Estate" EntitySet="Estates" />
@@ -916,14 +829,6 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Estate" EntitySet="Estates" />
           </AssociationSet>
-          <AssociationSet Name="FK_dbo_House_CreatedBy" Association="Self.FK_dbo_House_CreatedBy">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="House" EntitySet="Houses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_House_UpdatedBy" Association="Self.FK_dbo_House_UpdatedBy">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="House" EntitySet="Houses" />
-          </AssociationSet>
           <AssociationSet Name="FK_dbo_Tenant_CreatedBy" Association="Self.FK_dbo_Tenant_CreatedBy">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Tenant" EntitySet="Tenants" />
@@ -934,14 +839,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_dbo_Tenant_UpdatedBy" Association="Self.FK_dbo_Tenant_UpdatedBy">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Tenant" EntitySet="Tenants" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_House_Estate" Association="Self.FK_dbo_House_Estate">
-            <End Role="Estate" EntitySet="Estates" />
-            <End Role="House" EntitySet="Houses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Tenant_House" Association="Self.FK_dbo_Tenant_House">
-            <End Role="House" EntitySet="Houses" />
             <End Role="Tenant" EntitySet="Tenants" />
           </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
@@ -961,12 +858,33 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="Transaction" EntitySet="Transactions" />
           </AssociationSet>
-          <AssociationSet Name="FK_dbo_Transaction_House" Association="REMSModel.FK_dbo_Transaction_House">
-            <End Role="House" EntitySet="Houses" />
-            <End Role="Transaction" EntitySet="Transactions" />
-          </AssociationSet>
           <AssociationSet Name="FK_dbo_Transaction_Tenant" Association="REMSModel.FK_dbo_Transaction_Tenant">
             <End Role="Tenant" EntitySet="Tenants" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <EntitySet Name="Houses" EntityType="REMSModel.House" />
+          <AssociationSet Name="FK_db_House_DeletedBy" Association="REMSModel.FK_db_House_DeletedBy">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="House" EntitySet="Houses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_House_CreatedBy" Association="REMSModel.FK_dbo_House_CreatedBy">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="House" EntitySet="Houses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_House_UpdatedBy" Association="REMSModel.FK_dbo_House_UpdatedBy">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="House" EntitySet="Houses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_House_Estate" Association="REMSModel.FK_dbo_House_Estate">
+            <End Role="Estate" EntitySet="Estates" />
+            <End Role="House" EntitySet="Houses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Tenant_House" Association="REMSModel.FK_dbo_Tenant_House">
+            <End Role="House" EntitySet="Houses" />
+            <End Role="Tenant" EntitySet="Tenants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Transaction_House" Association="REMSModel.FK_dbo_Transaction_House">
+            <End Role="House" EntitySet="Houses" />
             <End Role="Transaction" EntitySet="Transactions" />
           </AssociationSet>
           </EntityContainer>
@@ -991,8 +909,8 @@
           <NavigationProperty Name="AspNetUser" Relationship="REMSModel.FK_dbo_Transaction_CreatedBy" FromRole="Transaction" ToRole="AspNetUser" />
           <NavigationProperty Name="AspNetUser1" Relationship="REMSModel.FK_dbo_Transaction_DeletedBy" FromRole="Transaction" ToRole="AspNetUser" />
           <NavigationProperty Name="AspNetUser2" Relationship="REMSModel.FK_dbo_Transaction_UpdatedBy" FromRole="Transaction" ToRole="AspNetUser" />
-          <NavigationProperty Name="House" Relationship="REMSModel.FK_dbo_Transaction_House" FromRole="Transaction" ToRole="House" />
           <NavigationProperty Name="Tenant" Relationship="REMSModel.FK_dbo_Transaction_Tenant" FromRole="Transaction" ToRole="Tenant" />
+          <NavigationProperty Name="House" Relationship="REMSModel.FK_dbo_Transaction_House" FromRole="Transaction" ToRole="House" />
         </EntityType>
         <Association Name="FK_dbo_Transaction_CreatedBy">
           <End Type="REMSModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
@@ -1030,18 +948,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_Transaction_House">
-          <End Type="REMSModel.House" Role="House" Multiplicity="1" />
-          <End Type="REMSModel.Transaction" Role="Transaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="House">
-              <PropertyRef Name="HouseId" />
-            </Principal>
-            <Dependent Role="Transaction">
-              <PropertyRef Name="HouseId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_dbo_Transaction_Tenant">
           <End Type="REMSModel.Tenant" Role="Tenant" Multiplicity="1" />
           <End Type="REMSModel.Transaction" Role="Transaction" Multiplicity="*" />
@@ -1051,6 +957,100 @@
             </Principal>
             <Dependent Role="Transaction">
               <PropertyRef Name="TenantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="House">
+          <Key>
+            <PropertyRef Name="HouseId" />
+          </Key>
+          <Property Name="HouseId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="EstateId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DeletedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AspNetUser" Relationship="REMSModel.FK_db_House_DeletedBy" FromRole="House" ToRole="AspNetUser" />
+          <NavigationProperty Name="AspNetUser1" Relationship="REMSModel.FK_dbo_House_CreatedBy" FromRole="House" ToRole="AspNetUser" />
+          <NavigationProperty Name="AspNetUser2" Relationship="REMSModel.FK_dbo_House_UpdatedBy" FromRole="House" ToRole="AspNetUser" />
+          <NavigationProperty Name="Estate" Relationship="REMSModel.FK_dbo_House_Estate" FromRole="House" ToRole="Estate" />
+          <NavigationProperty Name="Tenants" Relationship="REMSModel.FK_dbo_Tenant_House" FromRole="House" ToRole="Tenant" />
+          <NavigationProperty Name="Transactions" Relationship="REMSModel.FK_dbo_Transaction_House" FromRole="House" ToRole="Transaction" />
+        </EntityType>
+        <Association Name="FK_db_House_DeletedBy">
+          <End Type="REMSModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="REMSModel.House" Role="House" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="House">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_House_CreatedBy">
+          <End Type="REMSModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="REMSModel.House" Role="House" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="House">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_House_UpdatedBy">
+          <End Type="REMSModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="REMSModel.House" Role="House" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="House">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_House_Estate">
+          <End Type="REMSModel.Estate" Role="Estate" Multiplicity="1" />
+          <End Type="REMSModel.House" Role="House" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estate">
+              <PropertyRef Name="EstateId" />
+            </Principal>
+            <Dependent Role="House">
+              <PropertyRef Name="EstateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Tenant_House">
+          <End Type="REMSModel.House" Role="House" Multiplicity="1" />
+          <End Type="REMSModel.Tenant" Role="Tenant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="House">
+              <PropertyRef Name="HouseId" />
+            </Principal>
+            <Dependent Role="Tenant">
+              <PropertyRef Name="HouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Transaction_House">
+          <End Type="REMSModel.House" Role="House" Multiplicity="1" />
+          <End Type="REMSModel.Transaction" Role="Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="House">
+              <PropertyRef Name="HouseId" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="HouseId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1138,23 +1138,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Houses">
-            <EntityTypeMapping TypeName="REMSModel.House">
-              <MappingFragment StoreEntitySet="House">
-                <ScalarProperty Name="HouseId" ColumnName="HouseId" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="EstateId" ColumnName="EstateId" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
-                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Tenants">
             <EntityTypeMapping TypeName="REMSModel.Tenant">
               <MappingFragment StoreEntitySet="Tenant">
@@ -1199,6 +1182,23 @@
                 <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Houses">
+            <EntityTypeMapping TypeName="REMSModel.House">
+              <MappingFragment StoreEntitySet="House">
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="EstateId" ColumnName="EstateId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="HouseId" ColumnName="HouseId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -10,6 +10,7 @@
 
         var tenantId = $scope.tenantId;
         var action = $scope.action;
+        var houseId = $scope.houseId;
 
        if (action == 'create') {
             tenantId = 0;
@@ -45,6 +46,7 @@
                         FirstName: m.FirstName,
                         LastName : m.LastName,
                         Email: m.Email,
+                        HouseId :m.HouseId,
                         Timestamp: m.Timestamp,
                         MobileNumber: m.MobileNumber,
                         CreatedOn: m.CreatedOn,
@@ -68,6 +70,7 @@
                     FirstName: tenant.FirstName,
                     LastName: tenant.LastName,
                     Email: tenant.Email,
+                    HouseId : houseId,
                     MobileNumber : tenant.MobileNumber,
                     CreatedBy: tenant.CreatedBy,
                     CreatedOn: tenant.CreatedOn,
