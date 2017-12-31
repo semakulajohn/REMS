@@ -46,7 +46,8 @@ namespace REMS.DAL.Concrete
         public long SaveHouse(HouseDTO houseDTO, string userId)
         {
             long houseId = 0;
-
+            
+            
             if (houseDTO.HouseId == 0)
             {
 
@@ -63,10 +64,19 @@ namespace REMS.DAL.Concrete
         
                 };
 
-                this.UnitOfWork.Get<House>().AddNew(house);
-                this.UnitOfWork.SaveChanges();
-                houseId = house.HouseId;
-                return houseId;
+                var houseExists = this.houseExistsInGivenEstate(houseDTO.EstateId, houseDTO.Number);
+                if (!houseExists)
+                {
+                    this.UnitOfWork.Get<House>().AddNew(house);
+                    this.UnitOfWork.SaveChanges();
+                    houseId = house.HouseId;
+                    return houseId;
+                }
+                else
+                {
+                    return houseId;
+                }
+               
             }
 
             else
@@ -90,6 +100,35 @@ namespace REMS.DAL.Concrete
                 return houseDTO.HouseId;
             }
             return houseId;
+        }
+
+        public bool houseExistsInGivenEstate(long estateId, string houseNumber)
+        {
+            var houseExists = false;
+          var estateHouses =  this.UnitOfWork.Get<House>().AsQueryable().Where(m => m.EstateId == estateId);
+           
+            if(estateHouses != null)
+            {
+                foreach (var house in estateHouses)
+                {
+                    if (houseNumber == house.Number)
+                    {
+                        houseExists = true;
+                       
+                    }
+                    else
+                    {
+                        return houseExists;
+                    }
+	            }
+               
+
+             }
+            else
+            {
+                return houseExists;
+            }
+            return houseExists;
         }
 
         public bool MarkAsDeleted(long Id, string userId)

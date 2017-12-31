@@ -81,18 +81,28 @@
 
                         houseId = payload.data;
 
-                        $scope.showMessageSave = true;
+                        if (houseId == 0) {
+                            $scope.showMessageExists = true;
 
-                        $timeout(function () {
-                            $scope.showMessageSave = false;
+                            $timeout(function () {
+                                $scope.showMessageExists = false;
+                            }, 2000)
+                        }
+                        else {
+                            $scope.showMessageSave = true;
+
+                            $timeout(function () {
+                                $scope.showMessageSave = false;
 
 
-                            if (action == "create") {
-                                $state.go('house-edit', { 'action': 'edit', 'houseId': houseId });
-                            }
+                                if (action == "create") {
+                                    $state.go('house-edit', { 'action': 'edit', 'houseId': houseId });
+                                }
 
-                        }, 1500);
+                            }, 1500);
 
+                        }
+                       
 
                     });
             }
