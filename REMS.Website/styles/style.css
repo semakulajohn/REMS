@@ -91,12 +91,12 @@ a {
 }
 
 a:hover {
-    color: #00864f;
+    color: #3498DB;
     font-weight: normal;
 }
 
 .hpanel.hgreen .panel-body {
-  border-top: 2px solid #00864f;
+  border-top: 2px solid #3498DB;
 }
 
 .text-success {
@@ -113,7 +113,7 @@ a:hover {
 }
 
 .label-success {
-  background-color: #00864f;
+  background-color: #3498DB;
 }
 
 label {
@@ -147,11 +147,11 @@ label {
 }
 
 #side-menu li.active a, #side-menu li:hover a {
-  color: #00864f;
+  color: #3498DB;
 }
 
 #side-menu li .nav-second-level li.active a {
-  color: #00864f;
+  color: #3498DB;
 }
 
 #side-menu li .nav-second-level li a {
@@ -530,11 +530,11 @@ width: 100%;
 }
 
 #side-menu li.active a, #side-menu li:hover a {
-  color: #00864f;
+  color: #3498DB;
 }
 
 #side-menu li .nav-second-level li.active a {
-  color: #00864f;
+  color: #3498DB;
 }
 
 #side-menu li .nav-second-level li a {
@@ -949,7 +949,7 @@ select.input-validation-error {
 }
 
 .vg-bg {
-    border: 1px solid #00864f;
+    border: 1px solid #3498DB;
 }
 
 .well-sm {
