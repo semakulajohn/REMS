@@ -283,11 +283,6 @@
     <Content Include="app\views\agent\commission-per-client.html" />
     <Content Include="app\views\agent\list.html" />
     <Content Include="app\views\agent\manage-agent.html" />
-    <Content Include="app\views\client\edit.html" />
-    <Content Include="app\views\client\list.html" />
-    <Content Include="app\views\commission\agent-commission.html" />
-    <Content Include="app\views\commission\edit.html" />
-    <Content Include="app\views\commission\unpaid-commission.html" />
     <Content Include="app\views\dashboard.html" />
     <Content Include="app\views\estate\edit.html" />
     <Content Include="app\views\estate\estate-house.html" />
@@ -296,12 +291,9 @@
     <Content Include="app\views\house\list.html" />
     <Content Include="app\views\estate\list.html" />
     <Content Include="app\views\modal\modalAgent.html" />
-    <Content Include="app\views\payment\agent-payments.html" />
-    <Content Include="app\views\payment\list.html" />
     <Content Include="app\views\tenant\edit.html" />
     <Content Include="app\views\tenant\list.html" />
     <Content Include="app\views\transaction\edit.html" />
-    <Content Include="app\views\transaction\edit2.html" />
     <Content Include="app\views\transaction\list.html" />
     <Content Include="app\views\transaction\tenant-transactions.html" />
     <Content Include="app\views\_common\Breadcrumb.html" />
@@ -2315,6 +2307,8 @@
     <Content Include="images\Av.jpg" />
     <Content Include="images\loading-bars.svg" />
     <Content Include="images\logo.gif" />
+    <Content Include="images\sidebar-1.jpg" />
+    <Content Include="images\sidebar-5.jpg" />
     <Content Include="images\sidebar.jpg" />
     <Content Include="js\angular-bootstrap-nav-tree\abn_tree.css" />
     <Content Include="js\angular-bootstrap-nav-tree\abn_tree_directive.js" />

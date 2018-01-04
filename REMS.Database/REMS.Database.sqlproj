@@ -60,6 +60,7 @@
     <Folder Include="dbo" />
     <Folder Include="dbo\tables" />
     <Folder Include="dbo\tables\AspNet" />
+    <Folder Include="dbo\programmability" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\tables\AspNet\AspNetRoles.sql" />
@@ -71,6 +72,9 @@
     <Build Include="dbo\tables\House.sql" />
     <Build Include="dbo\tables\Tenant.sql" />
     <Build Include="dbo\tables\Transaction.sql" />
+    <Build Include="dbo\programmability\Mark_Estate_And_RelatedData_AsDeleted.sql" />
+    <Build Include="dbo\programmability\Mark_House_And_Related_DataAs_Deleted.sql" />
+    <Build Include="dbo\programmability\Mark_Tenant_And_Related_DataAs_Deleted.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="REMS.Database.refactorlog" />
