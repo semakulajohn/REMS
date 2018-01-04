@@ -156,7 +156,7 @@ angular
 
             $scope.gridData.columnDefs = [
 
-                { name: 'Tenant Id', field: 'TenantId', width: '5%', cellTemplate: '<div class="ui-grid-cell-contents"><a href="#/tenants/edit/{{row.entity.TenantId}}">{{row.entity.TenantId}}</a></div>' },
+               
                 {
                     name: 'First Name', cellTemplate: '<div class="ui-grid-cell-contents"> <a href="#/tenants/edit/{{row.entity.TenantId}}">{{row.entity.FirstName}}</a> </div>',
                     sort: {
@@ -206,7 +206,7 @@ angular
 
             $scope.gridData.columnDefs = [
 
-                { name: 'Transaction Id', field: 'TransactionId', width: '5%' },
+               
                 {
                     name: 'Amount', field: 'Amount', width: '10%',
 

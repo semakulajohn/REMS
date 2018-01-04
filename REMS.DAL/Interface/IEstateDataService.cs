@@ -13,7 +13,7 @@ namespace REMS.DAL.Interface
         IEnumerable<Estate> GetAllEstates();
         Estate GetEstate(long estateId);
         long SaveEstate(EstateDTO estate, string userId);
-        bool MarkAsDeleted(long estateId,string userId);
+        void MarkAsDeleted(long estateId,string userId);
         
     }
 }

@@ -421,6 +421,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Mark_Estate_And_RelatedData_AsDeleted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="inPutEstateId" Type="bigint" Mode="In" />
+          <Parameter Name="userId" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Mark_House_And_Related_DataAs_Deleted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="inPutHouseId" Type="bigint" Mode="In" />
+          <Parameter Name="userId" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Mark_Tenant_And_Related_DataAs_Deleted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="inPutTenantId" Type="bigint" Mode="In" />
+          <Parameter Name="userId" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="REMSModelStoreContainer">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
@@ -887,6 +899,18 @@
             <End Role="House" EntitySet="Houses" />
             <End Role="Transaction" EntitySet="Transactions" />
           </AssociationSet>
+          <FunctionImport Name="Mark_Estate_And_RelatedData_AsDeleted">
+            <Parameter Name="inPutEstateId" Mode="In" Type="Int64" />
+            <Parameter Name="userId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Mark_House_And_Related_DataAs_Deleted">
+            <Parameter Name="inPutHouseId" Mode="In" Type="Int64" />
+            <Parameter Name="userId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Mark_Tenant_And_Related_DataAs_Deleted">
+            <Parameter Name="inPutTenantId" Mode="In" Type="Int64" />
+            <Parameter Name="userId" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="Transaction">
           <Key>
@@ -1202,6 +1226,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Mark_Estate_And_RelatedData_AsDeleted" FunctionName="REMSModel.Store.Mark_Estate_And_RelatedData_AsDeleted" />
+          <FunctionImportMapping FunctionImportName="Mark_House_And_Related_DataAs_Deleted" FunctionName="REMSModel.Store.Mark_House_And_Related_DataAs_Deleted" />
+          <FunctionImportMapping FunctionImportName="Mark_Tenant_And_Related_DataAs_Deleted" FunctionName="REMSModel.Store.Mark_Tenant_And_Related_DataAs_Deleted" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

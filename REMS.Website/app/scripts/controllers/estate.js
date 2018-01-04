@@ -160,7 +160,6 @@ angular
 
             $scope.gridData.columnDefs = [
 
-                { name: 'EstateId', field: 'EstateId', width: '5%', cellTemplate: '<div class="ui-grid-cell-contents"><a href="#/estates/edit/{{row.entity.EstateId}}">{{row.entity.EstateId}}</a></div>' },
                 {
                     name: 'Name', cellTemplate: '<div class="ui-grid-cell-contents"> <a href="#/estates/edit/{{row.entity.EstateId}}">{{row.entity.Name}}</a> </div>',
                     sort: {
@@ -187,54 +186,6 @@ angular
 
         }]);
 
-//angular
-//    .module('homer').controller('TenantController', ['$scope', 'ngTableParams', '$http', '$filter', '$location', 'Utils', 'uiGridConstants',
-//        function ($scope, ngTableParams, $http, $filter, $location, Utils, uiGridConstants) {
-//            $scope.loadingSpinner = true;
-//            var promise = $http.get('/webapi/TenantApi/GetAllTenants');
-//            promise.then(
-//                function (payload) {
-//                    $scope.gridData.data = payload.data;
-//                    $scope.loadingSpinner = false;
-//                }
-//            );
-
-//            $scope.gridData = {
-//                enableFiltering: true,
-//                columnDefs: $scope.columns,
-//                enableRowSelection: true
-//            };
-
-//            $scope.gridData.multiSelect = true;
-
-//            $scope.gridData.columnDefs = [
-
-//                { name: 'Tenant Id', field: 'TenantId', width: '5%', cellTemplate: '<div class="ui-grid-cell-contents"><a href="#/tenants/edit/{{row.entity.TenantId}}">{{row.entity.TenantId}}</a></div>' },
-//                {
-//                    name: 'First Name', cellTemplate: '<div class="ui-grid-cell-contents"> <a href="#/tenants/edit/{{row.entity.TenantId}}">{{row.entity.FirstName}}</a> </div>',
-//                    sort: {
-//                        direction: uiGridConstants.ASC,
-//                        priority: 1
-//                    }
-//                },
-
-//                { name: 'Last Name', field: 'LastName' },
-
-//                { name: 'Email Address', field: 'Email' },
-
-//                 { name: 'Mobile Number ', field: 'MobileNumber' },
-
-//                { name: 'Transactions', field: 'TenantId', width: '15%', cellTemplate: '<div class="ui-grid-cell-contents"><a href="#/transactions/{{row.entity.TenantId}}">Tenant Transactions</a></div>' },
-
-
-
-
-//            ];
-
-
-
-
-//        }]);
 
 angular
     .module('homer').controller('EstateHouseController', ['$scope', 'ngTableParams', '$http', '$filter', '$location', 'Utils', 'uiGridConstants',
@@ -259,7 +210,7 @@ angular
 
             $scope.gridData.columnDefs = [
 
-                { name: 'House Id', field: 'HouseId', width: '5%', cellTemplate: '<div class="ui-grid-cell-contents"><a href="#/houses/edit/{{row.entity.HouseId}}">{{row.entity.HouseId}}</a></div>' },
+                
                 {
                     name: 'House Number', cellTemplate: '<div class="ui-grid-cell-contents"> <a href="#/houses/edit/'+$scope.retrievedEstateId +'/{{row.entity.HouseId}}">{{row.entity.Number}}</a> </div>',
                     sort: {

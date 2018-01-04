@@ -13,7 +13,7 @@ namespace REMS.DAL.Interface
         IEnumerable<House> GetAllHouses();
         House GetHouse(long houseId);
         long SaveHouse(HouseDTO house, string userId);
-        bool MarkAsDeleted(long houseId, string userId);
+        void MarkAsDeleted(long houseId, string userId);
         int GetCountOfHousesForParticularEstate(long estateId);
         IEnumerable<House> GetAllHousesForAParticularEstate(long estateId);
     }

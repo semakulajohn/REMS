@@ -13,7 +13,7 @@ namespace REMS.DAL.Interface
         IEnumerable<Tenant> GetAllTenants();
         Tenant GetTenant(long tenantId);
         long SaveTenant(TenantDTO tenant, string userId);
-        bool MarkAsDeleted(long tenantId, string userId);
+        void MarkAsDeleted(long tenantId, string userId);
         IEnumerable<Tenant> GetAllTenantsForParticularHouse(long houseId);
         
     }

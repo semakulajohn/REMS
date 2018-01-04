@@ -2,8 +2,8 @@
 
 angular
     .module('homer')
-    .controller('UserEditController', ['$scope', '$http', '$filter', '$location', '$log', '$timeout', '$modal', 'insertItemService', 'EnumInPageMediaLinkingType', 'EnumMediaType',
-    function ($scope, $http, $filter, $location, $log, $timeout, $modal, insertItemService, EnumInPageMediaLinkingType, EnumMediaType) {
+    .controller('UserEditController', ['$scope', '$http', '$filter', '$location', '$log', '$timeout', '$modal', 'insertItemService', 
+    function ($scope, $http, $filter, $location, $log, $timeout, $modal, insertItemService) {
         var Id = $scope.Id;
         $scope.roles = [];
         $scope.checkedRoles = [];

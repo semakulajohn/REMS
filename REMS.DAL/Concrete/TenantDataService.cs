@@ -96,33 +96,13 @@ namespace REMS.DAL.Concrete
             return tenantId;
         }
 
-        public bool MarkAsDeleted(long Id, string userId)
+        public void MarkAsDeleted(long tenantId, string userId)
         {
-            bool IsDeleted = false;
-            if (Id != null)
+
+            using (var dbContext = new REMSEntities())
             {
-                var tenant = (from n in this.UnitOfWork.Get<Tenant>().AsQueryable()
-                              where n.TenantId == Id
-                              select n
-                           ).FirstOrDefault();
-                if (tenant != null)
-                {
-                    tenant.DeletedOn = DateTime.Now;
-                    tenant.Deleted = true;
-                    tenant.DeletedBy = userId;
-                    this.UnitOfWork.Get<Tenant>().Update(tenant);
-                    this.UnitOfWork.SaveChanges();
-                }
-
-
-                IsDeleted = true;
-            }
-            else
-            {
-                IsDeleted = false;
-            }
-
-            return IsDeleted;
+                dbContext.Mark_Tenant_And_Related_DataAs_Deleted(tenantId, userId);
+            }      
 
         }
 

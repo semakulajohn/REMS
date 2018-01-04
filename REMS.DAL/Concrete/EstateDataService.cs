@@ -94,33 +94,14 @@ namespace REMS.DAL.Concrete
             return estateId;
         }
 
-        public bool MarkAsDeleted(long Id,string userId)
+        public void MarkAsDeleted(long estateId,string userId)
         {
-            bool IsDeleted = false;
-            if (Id != null)
+           
+
+            using (var dbContext = new REMSEntities())
             {
-                var estate = (from n in this.UnitOfWork.Get<Estate>().AsQueryable()
-                                  where n.EstateId == Id
-                                  select n
-                           ).FirstOrDefault();
-                if (estate != null)
-                {
-                    estate.DeletedOn = DateTime.Now;
-                    estate.Deleted = true;
-                    estate.DeletedBy = userId;
-                    this.UnitOfWork.Get<Estate>().Update(estate);
-                    this.UnitOfWork.SaveChanges();
-                }
-
-
-                IsDeleted = true;
-            }
-            else
-            {
-                IsDeleted = false;
-            }
-
-            return IsDeleted;
+                dbContext.Mark_Estate_And_RelatedData_AsDeleted(estateId, userId);
+            }      
 
         }
 

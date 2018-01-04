@@ -13,6 +13,8 @@ namespace REMS.EF.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using REMS.EF.Context;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class REMSEntities : DbContext,IDbContext
     {
@@ -34,5 +36,44 @@ namespace REMS.EF.Models
         public virtual DbSet<Tenant> Tenants { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<House> Houses { get; set; }
+    
+        public virtual int Mark_Estate_And_RelatedData_AsDeleted(Nullable<long> inPutEstateId, string userId)
+        {
+            var inPutEstateIdParameter = inPutEstateId.HasValue ?
+                new ObjectParameter("inPutEstateId", inPutEstateId) :
+                new ObjectParameter("inPutEstateId", typeof(long));
+    
+            var userIdParameter = userId != null ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Mark_Estate_And_RelatedData_AsDeleted", inPutEstateIdParameter, userIdParameter);
+        }
+    
+        public virtual int Mark_House_And_Related_DataAs_Deleted(Nullable<long> inPutHouseId, string userId)
+        {
+            var inPutHouseIdParameter = inPutHouseId.HasValue ?
+                new ObjectParameter("inPutHouseId", inPutHouseId) :
+                new ObjectParameter("inPutHouseId", typeof(long));
+    
+            var userIdParameter = userId != null ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Mark_House_And_Related_DataAs_Deleted", inPutHouseIdParameter, userIdParameter);
+        }
+    
+        public virtual int Mark_Tenant_And_Related_DataAs_Deleted(Nullable<long> inPutTenantId, string userId)
+        {
+            var inPutTenantIdParameter = inPutTenantId.HasValue ?
+                new ObjectParameter("inPutTenantId", inPutTenantId) :
+                new ObjectParameter("inPutTenantId", typeof(long));
+    
+            var userIdParameter = userId != null ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Mark_Tenant_And_Related_DataAs_Deleted", inPutTenantIdParameter, userIdParameter);
+        }
     }
 }

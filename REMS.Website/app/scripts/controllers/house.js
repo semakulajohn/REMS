@@ -164,7 +164,7 @@ angular
 
             $scope.gridData.columnDefs = [
 
-                { name: 'House Id', field: 'HouseId', width: '5%', cellTemplate: '<div class="ui-grid-cell-contents"><a href="#/houses/edit/{{row.entity.HouseId}}">{{row.entity.HouseId}}</a></div>' },
+                
                 {
                     name: 'House Number', cellTemplate: '<div class="ui-grid-cell-contents"> <a href="#/houses/edit/{{row.entity.HouseId}}">{{row.entity.Number}}</a> </div>',
                     sort: {
@@ -214,7 +214,7 @@ angular
 
             $scope.gridData.columnDefs = [
 
-                { name: 'Tenant Id', field: 'TenantId', width: '5%', cellTemplate: '<div class="ui-grid-cell-contents"><a href="#/tenants/edit/'+$scope.retrievedHouseId+'/{{row.entity.TenantId}}">{{row.entity.TenantId}}</a></div>' },
+                
                 {
                     name: 'First Name', cellTemplate: '<div class="ui-grid-cell-contents"> <a href="#/tenants/edit/'+$scope.retrievedHouseId+'/{{row.entity.TenantId}}">{{row.entity.FirstName}}</a> </div>',
                     sort: {

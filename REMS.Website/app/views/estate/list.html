@@ -1,7 +1,7 @@
 ﻿
 <div id="header" ng-include="'/app/views/_common/header.html'"></div>
 
-<aside id="menu" ng-include="'/app/views/_common/navigation.html'"></aside>
+<aside id="menu" style="background-image:url(../../images/sidebar-5.jpg);" ng-include="'/app/views/_common/navigation.html'"></aside>
 
 <div id="wrapper">
 
@@ -13,7 +13,7 @@
 
                 <div class="clear0"></div>
 
-                <a ui-sref="estate-edit({ action: 'create', estateId: 0})" class="btn btn-danger btn-sm"><i class="fa fa-plus"></i> Add Estate</a>
+                <a ui-sref="estate-edit({ action: 'create', estateId: 0})" class="btn btn-info btn-sm"><i class="fa fa-plus"></i> Add Estate</a>
 
                 <span ng-if="loadingSpinner" class="loadingSpinner">
                     <img src="/images/loading-bars.svg" width="45" height="45" /> Loading...

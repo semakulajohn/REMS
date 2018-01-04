@@ -2315,6 +2315,7 @@
     <Content Include="images\Av.jpg" />
     <Content Include="images\loading-bars.svg" />
     <Content Include="images\logo.gif" />
+    <Content Include="images\sidebar.jpg" />
     <Content Include="js\angular-bootstrap-nav-tree\abn_tree.css" />
     <Content Include="js\angular-bootstrap-nav-tree\abn_tree_directive.js" />
     <Content Include="js\angular-bootstrap-nav-tree\ReadMe.txt" />
