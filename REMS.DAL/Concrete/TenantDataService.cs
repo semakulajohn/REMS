@@ -25,7 +25,7 @@ namespace REMS.DAL.Concrete
       
         public IEnumerable<Tenant> GetAllTenants()
         {
-            return this.UnitOfWork.Get<Tenant>().AsQueryable();
+            return this.UnitOfWork.Get<Tenant>().AsQueryable().Where(t => t.Deleted == false); ;
         }
 
         public Tenant GetTenant(long tenantId)

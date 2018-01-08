@@ -104,7 +104,7 @@
 
 
         $scope.Cancel = function () {
-            $state.go('tenants.list');
+            $state.go('house-tenants', { houseId: houseId });
 
         };
 

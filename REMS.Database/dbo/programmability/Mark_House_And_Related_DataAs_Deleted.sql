@@ -10,19 +10,17 @@ DECLARE
 
 DECLARE @TenantTransactions TABLE
 (
-	TenantId bigint,
 	TransactionId bigint
 	)
 DECLARE @TenantHouses TABLE(
-	TenantId BIGINT,
-	HouseId BIGINT
+	TenantId BIGINT
 )
 
 BEGIN TRY
  BEGIN TRANSACTION TRA_UpdateHouseRelatedDetails
 
 INSERT INTO @TenantHouses
-	SELECT HouseId,TenantId FROM Tenant WHERE HouseId = @inPutHouseId  AND Deleted = 0 
+	SELECT TenantId FROM Tenant WHERE HouseId = @inPutHouseId  AND Deleted = 0 
 
 WHILE(Select Count(*) From @TenantHouses) > 0
 BEGIN
@@ -30,23 +28,29 @@ BEGIN
 
 		
 		INSERT INTO @TenantTransactions
-		SELECT  TransactionId,TenantId from [Transaction] WHERE TenantId = @TenantId AND Deleted = 0
+		SELECT  TransactionId from [Transaction] WHERE TenantId = @TenantId AND Deleted = 0
 
 			WHILE (SELECT COUNT(*) FROM @TenantTransactions)>0
 			BEGIN
-			SELECT TOP 1 @TransactionId = TransactionId FROm @TenantTransactions
-			
+
+			SELECT TOP 1 @TransactionId = TransactionId From @TenantTransactions 
+				
 		
-	 Update [Transaction]
-	 SET Deleted = 1,DeletedBy = @userId,DeletedOn = GETDATE()
-	 WHERE TransactionId =@TransactionId AND Deleted = 0
+			Update [Transaction]
+			SET Deleted = 1,DeletedBy = @userId,DeletedOn = GETDATE()
+			WHERE TransactionId =@TransactionId AND Deleted = 0
 	 
-	 Delete @TenantTransactions Where TransactionId = @TransactionId
+			Delete @TenantTransactions Where TransactionId = @TransactionId
+
+			End
+
+
 
 	Update Tenant
 	SET Deleted = 1,DeletedBy = @userId, DeletedOn = GETDATE() 
 	WHERE TenantId = @TenantId AND Deleted = 0
-	 Delete @TenantHouses Where TenantId = @TenantId
+	
+	Delete @TenantHouses Where TenantId = @TenantId
 
 		
 	END
@@ -54,9 +58,9 @@ BEGIN
 	
 	Update House
 	SET Deleted =1,DeletedBy = @userId,DeletedOn = GETDATE()
-	WHERE HouseId = @HouseId AND Deleted = 0
+	WHERE HouseId = @inPutHouseId AND Deleted = 0
 	
- END
+ 
 
  COMMIT TRANSACTION TRA_UpdateHouseRelatedDetails
 

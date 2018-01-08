@@ -112,7 +112,8 @@
 
 
         $scope.Cancel = function () {
-            $state.go('estates.list');
+            //$state.go('estate-houses');
+            $state.go('estate-houses', { estateId: estateId });
 
         };
 

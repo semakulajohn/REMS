@@ -9,8 +9,7 @@ DECLARE
 
 DECLARE @TenantTransactions TABLE
 (
-	TenantId bigint,
-	TransactionId bigint
+		TransactionId bigint
 	)
 
 
@@ -18,11 +17,11 @@ BEGIN TRY
  BEGIN TRANSACTION TRA_UpdateTenantRelatedDetails
 
 INSERT INTO @TenantTransactions
-	SELECT TransactionId,TenantId FROM [Transaction] WHERE TenantId = @inPutTenantId  AND Deleted = 0 
+	SELECT TransactionId FROM [Transaction] WHERE TenantId = @inPutTenantId  AND Deleted = 0 
 
 WHILE(Select Count(*) From @TenantTransactions) > 0
 BEGIN
-	SELECT TOP 1 @TenantId = TenantId From @TenantTransactions 
+	SELECT TOP 1 @TransactionId = TransactionId From @TenantTransactions 
 				
 		
 	 Update [Transaction]
@@ -33,14 +32,13 @@ BEGIN
 
 	
 	
-	
-	Update [Transaction]
-	SET Deleted =1,DeletedBy = @userId,DeletedOn = GETDATE()
-	WHERE TransactionId = @TransactionId AND Deleted = 0
-	
  END
+ 
+	Update [Tenant]
+	SET Deleted =1,DeletedBy = @userId,DeletedOn = GETDATE()
+	WHERE TenantId = @inPutTenantId AND Deleted = 0
 
- COMMIT TRANSACTION TRA_UpdateHouseRelatedDetails
+ COMMIT TRANSACTION TRA_UpdateTenantRelatedDetails
 
 		PRINT 'Operation Successful.'
 		
@@ -48,7 +46,7 @@ BEGIN
  BEGIN CATCH 
 		IF (@@TRANCOUNT > 0)
 			BEGIN
-				ROLLBACK TRANSACTION TRA_UpdateHouseRelatedDetails
+				ROLLBACK TRANSACTION TRA_UpdateTenantRelatedDetails
 				PRINT 'Error detected, all changes reversed'
 			END
 END CATCH

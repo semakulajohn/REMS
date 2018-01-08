@@ -115,7 +115,7 @@ angular
 
 
         $scope.Cancel = function () {
-            $state.go('transactions.list');
+            $state.go('tenant-transactions', { tenantId: tenantId });
 
         };
 

@@ -25,7 +25,7 @@ namespace REMS.DAL.Concrete
       
         public IEnumerable<House> GetAllHouses()
         {
-            return this.UnitOfWork.Get<House>().AsQueryable();
+            return this.UnitOfWork.Get<House>().AsQueryable().Where(h => h.Deleted == false); ;
         }
 
         public House GetHouse(long houseId)
@@ -162,7 +162,7 @@ namespace REMS.DAL.Concrete
         {
             
             var estateHouses = this.UnitOfWork.Get<House>().AsQueryable()
-                                .Where(h => h.EstateId == estateId);
+                                .Where(h => h.EstateId == estateId && h.Deleted==false);
             return estateHouses;
 
         }
