@@ -27,7 +27,7 @@ namespace REMS.Website.Controllers
         private ApplicationUserManager _userManager;
 
         private IUserService _userService;
-        //private string systemAdmin = ConfigurationManager.AppSettings["SystemAdmin"];
+       
        private string RoleId = ConfigurationManager.AppSettings["ManagerRoleId"];
 
         public AccountController()
