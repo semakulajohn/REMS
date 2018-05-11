@@ -25,7 +25,7 @@ namespace REMS.DAL.Concrete
       
         public IEnumerable<Estate> GetAllEstates()
         {
-            return this.UnitOfWork.Get<Estate>().AsQueryable().Where(e => e.Deleted == false); ;
+            return this.UnitOfWork.Get<Estate>().AsQueryable().Where(e => e.Deleted == false); 
         }
 
         public Estate GetEstate(long estateId)
